@@ -25,10 +25,10 @@ fetch(endpoint)
 
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
-    //If the city === to search
+    //If the city === to search. 
     const regex = new RegExp(wordToMatch, 'gi');
     return place.city.match(regex) || place.state.match(regex)
-     
+    
   });
 }
 
