@@ -48,6 +48,24 @@
 <script>
 const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+function strip(bandName){
+  return bandName.replace(/^(a |the |an)/i, '').trim(); // a function that strips a, an, or the from the band name using RegExp
+}
+
+const sortedBands = bands.sort((a, b) => strip(a) > strip(b) ? 1 : -1);//A function to arrange the bands alphabetically, but it dowsnt ignore (A, An, The etc) this is before we make strip()
+  
+  
+  // if(strip(a) > strip(b)){ //strips bands a and b of a, an or the, compares them and arranges alphabetically
+  //   return 1;
+  // } else {
+  //   return -1;
+  // }
+
+document.querySelector('#bands').innerHTML = 
+  sortedBands //sets the inner html of bands element
+  .map(band => `<li>${band}</li>`) //puts bands into a list item
+  .join('');
+
 
 </script>
 
